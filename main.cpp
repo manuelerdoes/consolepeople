@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "human.h"
+#include "classes/human.h"
 
 using namespace std;
 
