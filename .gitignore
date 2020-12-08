@@ -32,4 +32,5 @@
 *.app
 
 # IDE Settings
-.vscode
+*.vscode
+*.dSYM
