@@ -11,5 +11,7 @@ int main()
 
     janet.printAttributes();
 
+    //std::cout << "gender of the person: " << janet.getGender() << std::endl;
+
     return 0;
 }
