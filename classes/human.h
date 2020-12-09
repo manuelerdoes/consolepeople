@@ -51,6 +51,9 @@ class Human {
             std::cout << "BMI: " << bmi << std::endl << std::endl;
             
             std::cout << "ambition: " << ambition << std::endl;
+            std::cout << "humor: " << humor << std::endl;
+            std::cout << "empathy: " << empathy << std::endl;
+            std::cout << "selfawareness: " << selfawareness << std::endl;
 
         }
 };

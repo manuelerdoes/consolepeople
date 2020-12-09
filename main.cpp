@@ -7,7 +7,7 @@
 int main()
 {
 
-    Human janet("Janet", "female", "brown", 21);
+    Human janet("Ida", "female", "brown", 21);
 
     janet.printAttributes();
 
