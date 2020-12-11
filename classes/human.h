@@ -1,6 +1,8 @@
 #ifndef HUMAN_H
 #define HUMAN_H
 
+#include "../utilfuncs.h"
+
 class Human {
     private:
         std::string name;
