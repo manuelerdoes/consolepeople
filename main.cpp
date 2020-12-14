@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <chrono>
 #include <thread>
+#include <unistd.h>
 #include "classes/human.h"
 //#include "classes/fraction.h"
 //#include "utilfuncs.h"
@@ -17,7 +18,22 @@ int main()
     //init
     computingInterval = computingInterval / runningSpeed;
     Human ida("Ida", "female", "brown", 21);
-    //ida.printAttributes();
+    ida.printAttributes();
+    pid_t pid = fork();
+
+    if (pid == 0) {
+        std::cout << "starting life of " << ida.getName() << std::endl;
+        int counter = 0;
+        while (true) {
+            std::cout << "living " << counter << " seconds" << std::endl;
+            std::this_thread::sleep_for(std::chrono::milliseconds(computingInterval));
+            counter++;
+            
+        }
+
+    }
+
+
 
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(computingInterval));
