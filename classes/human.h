@@ -38,11 +38,11 @@ class Human {
             selfawareness = randomNumber(10,40);    
             selfpity = randomNumber(30,100);
             introvert = randomNumber(0,100);
-            sexuality = randomNumber(0,10); // 0 -> hetero, 5 -> bi, 10 -> gay
-            innergender = randomNumber(0,10); // 0 -> physical gender, 5 -> both, 10 -> other gender
+            sexuality = tripleProbabilityRandom(10, 3, 4, 3, 70, 20, 10); // 0 -> hetero, 5 -> bi, 10 -> gay
+            innergender = tripleProbabilityRandom(10, 3, 4, 3, 75, 10, 15); // 0 -> physical gender, 5 -> both, 10 -> other gender
             painsensitivity = randomNumber(0,100);
             talkativity = randomNumber(0,100);
-            logicscore = randomNumber(0,100);
+            logicscore = tripleProbabilityRandom(100, 30, 50, 20, 20, 70, 10);
             feelingscore = randomNumber(0,100);
         }
 
@@ -56,7 +56,14 @@ class Human {
             std::cout << "humor: " << humor << std::endl;
             std::cout << "empathy: " << empathy << std::endl;
             std::cout << "selfawareness: " << selfawareness << std::endl;
-
+            std::cout << "selfpity: " << selfpity << std::endl;
+            std::cout << "introvert: " << introvert << std::endl;
+            std::cout << "sexuality: " << sexuality;
+            std::string sexDescription;
+            if (sexuality <= 3) { sexDescription = "hetero"; };
+            if (sexuality > 3 && sexuality < 8) { sexDescription = "bi"; };
+            if (sexuality >= 8) { sexDescription = "gay"; };
+            std::cout << " (" << sexDescription << ")" << std::endl;
         }
 };
 

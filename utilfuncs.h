@@ -1,7 +1,6 @@
 #ifndef UTILFUNCS_H
 #define UTILFUNCS_H
 
-#include "classes/human.h"
 #include "classes/fraction.h"
 
 int randomNumber(int from, int to) {
@@ -40,7 +39,7 @@ int tripleProbabilityRandom(int fullRange, int range1, int range2, int range3, i
 
     //std::cout << superRange << " " << rangeNum1 << " " << rangeNum2 << " " << rangeNum3 << std::endl;
 
-    randomNum = randomNumber(0,superRange);
+    randomNum = randomNumber(1,superRange);
 
     start = 1;
     forRange = rangeNum1;    
@@ -50,17 +49,19 @@ int tripleProbabilityRandom(int fullRange, int range1, int range2, int range3, i
         forRange += rangeNum1;
     }
 
-    start = 1;
-    forRange = rangeNum2;
-    for (int i = 1; i <= range2; i++) {
+    forRange -= rangeNum1;
+
+    forRange += rangeNum2;
+    for (int i = range1 + 1; i <= range1 + range2; i++) {
         if (randomNum >= start && randomNum <= forRange) { result = i; };
         start += rangeNum2;
         forRange += rangeNum2;
     }
 
-    start = 1;
-    forRange = rangeNum3;
-    for (int i = 1; i <= range3; i++) {
+    forRange -= rangeNum2;
+
+    forRange += rangeNum3;
+    for (int i = range1 + range2 + 1; i <= fullRange; i++) {
         if (randomNum >= start && randomNum <= forRange) { result = i; };
         start += rangeNum3;
         forRange += rangeNum3;

@@ -3,20 +3,30 @@
 #include <random>
 #include <numeric>
 #include <iomanip>
+#include <chrono>
+#include <thread>
 #include "classes/human.h"
-#include "classes/fraction.h"
-#include "utilfuncs.h"
+//#include "classes/fraction.h"
+//#include "utilfuncs.h"
 
+unsigned int runningSpeed = 1;
+unsigned int computingInterval = 1000;
+computingInterval = computingInterval / runningSpeed;
 
 int main()
 {
+    //init
+    Human ida("Ida", "female", "brown", 21);
+    //ida.printAttributes();
 
-    Human janet("Ida", "female", "brown", 21);
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(computingInterval));
+    }
+  
 
-    //janet.printAttributes();
 
-    int huhu = tripleProbabilityRandom(10, 3, 4, 3, 70, 20, 10);
-    std::cout << huhu << std::endl;
+
+   
 
 
 
