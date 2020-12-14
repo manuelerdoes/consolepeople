@@ -9,9 +9,9 @@ class Human {
         std::string gender;
         std::string haircolor;
         float bmi;
+        int age;
 
-        int mood;
-
+// character and stuff
         int ambition;
         int humor;
         int empathy;
@@ -25,12 +25,36 @@ class Human {
         int logicscore;
         int feelingscore;
 
+// state
+    // musts
+        int mood;
+        int eat;
+        int piss;
+        int shit;
+        int sleep;
+    // wants
+        int company;
+        int love;
+        int sex;
+        //int recognition;
+        //int friendship;
+
     public:
         Human(std::string name1, std::string gender1, std::string haircolor1, float bmi1) {
             name = name1;
             gender = gender1;
             haircolor = haircolor1;
             bmi = bmi1;
+            age = 0;
+
+            mood = 0;
+            eat = 50;
+            piss = 100;
+            shit = 100;
+            sleep = 50;
+            company = 0;
+            love = 0;
+            sex = 0;
 
             ambition = randomNumber(1,100);
             humor = randomNumber(30,100);  
@@ -51,6 +75,15 @@ class Human {
             std::cout << "gender: " << gender << std::endl;
             std::cout << "haircolor: " << haircolor << std::endl;
             std::cout << "BMI: " << bmi << std::endl << std::endl;
+
+            std::cout << "mood: " << mood << std::endl;
+            std::cout << "eat: " << eat << std::endl;
+            std::cout << "piss: " << piss << std::endl;
+            std::cout << "shit: " << shit << std::endl;
+            std::cout << "sleep: " << sleep << std::endl;
+            std::cout << "company: " << company << std::endl;
+            std::cout << "love: " << love << std::endl;
+            std::cout << "sex: " << sex << std::endl << std::endl;
             
             std::cout << "ambition: " << ambition << std::endl;
             std::cout << "humor: " << humor << std::endl;
@@ -64,7 +97,41 @@ class Human {
             if (sexuality > 3 && sexuality < 8) { sexDescription = "bi"; };
             if (sexuality >= 8) { sexDescription = "gay"; };
             std::cout << " (" << sexDescription << ")" << std::endl;
+            std::cout << "innergender: " << innergender << std::endl;
+            std::cout << "painsensitivity: " << painsensitivity << std::endl;
+            std::cout << "talkativity: " << talkativity << std::endl;
+            std::cout << "logicscore: " << logicscore << std::endl;
+            std::cout << "feelingscore: " << feelingscore << std::endl;
         }
+
+// getters
+        std::string getName() { return name; }
+        std::string getGender() { return gender; }
+        std::string getHaircolor() { return haircolor; }
+        float getBmi() { return bmi; }
+        int getAge() { return age; }
+        int getAmbition() { return ambition; }
+        int getHumor() { return humor; }
+        int getEmpathy() { return empathy; }
+        int getSelfawareness() { return selfawareness; }
+        int getSelfpity() { return selfpity; }
+        int getIntrovert() { return introvert; }
+        int getSexuality() { return sexuality; }
+        int getPainsensitivity() { return painsensitivity; }
+        int getInnergender() { return innergender; }
+        int getTalkativity() { return talkativity; }
+        int getLogicscore() { return logicscore; }
+        int getFeelingscore() { return feelingscore; }
+        int getMood() { return mood; }
+        int getEat() { return eat; }
+        int getPiss() { return piss; }
+        int getShit() { return shit; }
+        int getSleep() { return sleep; }
+        int getCompany() { return company; }
+        int getLove() { return love; }
+        int getSex () { return sex; }
+
+
 };
 
 #endif
