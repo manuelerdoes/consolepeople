@@ -11,11 +11,11 @@
 
 unsigned int runningSpeed = 1;
 unsigned int computingInterval = 1000;
-computingInterval = computingInterval / runningSpeed;
 
 int main()
 {
     //init
+    computingInterval = computingInterval / runningSpeed;
     Human ida("Ida", "female", "brown", 21);
     //ida.printAttributes();
 
