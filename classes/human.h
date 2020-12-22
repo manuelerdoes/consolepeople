@@ -9,7 +9,7 @@ class Human {
         std::string gender;
         std::string haircolor;
         float bmi;
-        unsigned long age; //in seconds -> 32bit -> 136 years max
+        unsigned long long birthday; //in ms since epoch
 
 // character and stuff
         int ambition;
@@ -40,12 +40,12 @@ class Human {
         //int friendship;
 
     public:
-        Human(std::string n, std::string g, std::string h, unsigned long a) {
+        Human(std::string n, std::string g, std::string h, Clock c) {
             name = n;
             gender = g;
             haircolor = h;
             bmi = 21;
-            age = a;
+            birthday = c.timeSinceEpochS();
 
             mood = 0;
             eat = 50;
@@ -113,8 +113,7 @@ class Human {
         std::string getGender() { return gender; }
         std::string getHaircolor() { return haircolor; }
         float getBmi() { return bmi; }
-        int getAge() { return age; }
-        void setAge(unsigned long a) { age = a; }
+        int getBirthday() { return birthday; }
         int getAmbition() { return ambition; }
         int getHumor() { return humor; }
         int getEmpathy() { return empathy; }
