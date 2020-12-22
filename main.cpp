@@ -5,38 +5,37 @@
 #include <iomanip>
 #include <chrono>
 #include <thread>
+#include <pthread.h>
 #include <unistd.h>
+#include "clock.h"
 #include "classes/human.h"
+#include "humanactions.h"
+#include "humanlife.h"
 //#include "classes/fraction.h"
 //#include "utilfuncs.h"
 
-unsigned int runningSpeed = 1;
-unsigned int computingInterval = 1000;
+int runningSpeed = 1;
+int computingInterval = 1000;
 
 int main()
 {
     //init
     computingInterval = computingInterval / runningSpeed;
-    Human ida("Ida", "female", "brown", 21);
-    ida.printAttributes();
-    pid_t pid = fork();
+    Human ida("Ida", "female", "brown", 0);
+    Human manu("Manu", "male", "brown", 0);
+    Human max("Max", "male", "blonde", 0);
 
-    if (pid == 0) {
-        std::cout << "starting life of " << ida.getName() << std::endl;
-        int counter = 0;
-        while (true) {
-            std::cout << "living " << counter << " seconds" << std::endl;
-            std::this_thread::sleep_for(std::chrono::milliseconds(computingInterval));
-            counter++;
-            
-        }
 
-    }
+    //int maxeslife = liveLife(max);
+
+    Clock clock1;
+
 
 
 
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(computingInterval));
+        std::cout << "time: " << clock1.elapsed() << std::endl;
     }
   
 

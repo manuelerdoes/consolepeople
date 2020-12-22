@@ -9,7 +9,7 @@ class Human {
         std::string gender;
         std::string haircolor;
         float bmi;
-        int age;
+        unsigned long age; //in seconds -> 32bit -> 136 years max
 
 // character and stuff
         int ambition;
@@ -40,12 +40,12 @@ class Human {
         //int friendship;
 
     public:
-        Human(std::string name1, std::string gender1, std::string haircolor1, float bmi1) {
-            name = name1;
-            gender = gender1;
-            haircolor = haircolor1;
-            bmi = bmi1;
-            age = 0;
+        Human(std::string n, std::string g, std::string h, unsigned long a) {
+            name = n;
+            gender = g;
+            haircolor = h;
+            bmi = 21;
+            age = a;
 
             mood = 0;
             eat = 50;
@@ -104,12 +104,17 @@ class Human {
             std::cout << "feelingscore: " << feelingscore << std::endl;
         }
 
-// getters
+// outside functions
+        void doPiss(void);
+        void doShit(void);
+
+// getters & setters
         std::string getName() { return name; }
         std::string getGender() { return gender; }
         std::string getHaircolor() { return haircolor; }
         float getBmi() { return bmi; }
         int getAge() { return age; }
+        void setAge(unsigned long a) { age = a; }
         int getAmbition() { return ambition; }
         int getHumor() { return humor; }
         int getEmpathy() { return empathy; }
@@ -125,6 +130,7 @@ class Human {
         int getMood() { return mood; }
         int getEat() { return eat; }
         int getPiss() { return piss; }
+        void setPiss(int p) { piss = p; }
         int getShit() { return shit; }
         int getSleep() { return sleep; }
         int getCompany() { return company; }
@@ -133,5 +139,7 @@ class Human {
 
 
 };
+
+
 
 #endif
