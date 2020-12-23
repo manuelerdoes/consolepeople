@@ -14,30 +14,29 @@ class Clock {
             startTime = timeSinceEpochS();
         }
 
-        unsigned long long clockAge() {
-            unsigned long long rightNow = timeSinceEpochS();
+        uint64_t clockAge() {
+            uint64_t rightNow = timeSinceEpochS();
             return ((rightNow - startTime) * runningSpeed);
         }
 
-        unsigned long long elapsedMS(unsigned long long s) {
-            unsigned long long rightNow = timeSinceEpochMS();
+        uint64_t elapsedMS(uint64_t s) {
+            uint64_t rightNow = timeSinceEpochMS();
             return ((rightNow - s) * runningSpeed);
         }
 
 
-        unsigned long long elapsedS(unsigned long long s) {
-            unsigned long long rightNow = timeSinceEpochS();
-
-            return ((rightNow - s) * runningSpeed);
+        uint64_t elapsedS(uint64_t s) {
+            uint64_t rightNow = timeSinceEpochMS();
+            return (((rightNow - s) * runningSpeed)/1000);
         }
 
 
-        unsigned long long timeSinceEpochMS() {
+        uint64_t timeSinceEpochMS() {
             using namespace std::chrono;
             return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
         }
 
-            unsigned long long timeSinceEpochS() {
+        uint64_t timeSinceEpochS() {
             using namespace std::chrono;
             return duration_cast<seconds>(system_clock::now().time_since_epoch()).count();
         }

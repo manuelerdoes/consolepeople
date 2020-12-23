@@ -9,7 +9,7 @@ class Human {
         std::string gender;
         std::string haircolor;
         float bmi;
-        unsigned long long birthday; //in ms since epoch
+        uint64_t birthday; //in ms since epoch
 
 // character and stuff
         int ambition;
@@ -45,7 +45,7 @@ class Human {
             gender = g;
             haircolor = h;
             bmi = 21;
-            birthday = c.timeSinceEpochS();
+            birthday = c.timeSinceEpochMS();
 
             mood = 0;
             eat = 50;

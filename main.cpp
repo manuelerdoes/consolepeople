@@ -28,7 +28,11 @@ int main()
     Human max("Max", "male", "blonde", clock1);
 
     int maxeslife = liveLife(max, clock1);
-    //int manuslife = liveLife(manu, clock1);
+    std::this_thread::sleep_for(std::chrono::milliseconds(333));
+    int manuslife = liveLife(manu, clock1);
+
+    //uint64_t testo = clock1.timeSinceEpochMS();
+    //std::cout << "testo: " << testo << std::endl;
 
 
     while (true) {
