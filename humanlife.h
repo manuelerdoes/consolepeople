@@ -9,16 +9,16 @@ void lifeThread(Human h, Clock c) {
     while (true) {
         // print age
         int age = c.elapsedS(h.getBirthday());
-        if (counter >= 600 && counter < 3600 && counter % 600 == 0) { 
+        if (age >= 600 && age < 3600 && counter % 600 == 0) { 
             std::cout << h.getName() << " is " << age / 60 << " minute(s) old" << std::endl; 
         }
-        if (counter >= 3600 && counter < 86400 && counter % 3600 == 0) { 
+        if (age >= 3600 && age < 86400 && counter % 3600 == 0) { 
             std::cout << h.getName() << " is " << age / 3600 << " hour(s) old" << std::endl; 
         }
-        if (counter >= 86400 && counter < 31536000 && counter % 86400 == 0) { 
+        if (age >= 86400 && age < 31536000 && counter % 86400 == 0) { 
             std::cout << h.getName() << " is " << age / 86400 << " day(s) old" << std::endl; 
         }
-        if (counter >= 31536000 && counter % 31536000 == 0) { 
+        if (age >= 31536000 && counter % 31536000 == 0) { 
             std::cout << h.getName() << " is " << age / 31536000 << " year(s) old" << std::endl; 
         }
 

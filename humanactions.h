@@ -21,7 +21,7 @@ void Human::doShit() {
         std::this_thread::sleep_for(std::chrono::milliseconds(computingInterval*9));
         shit--;
     }
-    std::cout << "done shitting" << std::endl;
+    std::cout << name << " finished shitting" << std::endl;
     shit = 0;
 }
 

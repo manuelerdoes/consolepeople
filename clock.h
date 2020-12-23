@@ -6,17 +6,17 @@ extern int runningSpeed;
 
 class Clock {
     private:
-        unsigned long long startTime;
+        uint64_t startTime;
 
 
     public:
         Clock() {
-            startTime = timeSinceEpochS();
+            startTime = timeSinceEpochMS();
         }
 
         uint64_t clockAge() {
-            uint64_t rightNow = timeSinceEpochS();
-            return ((rightNow - startTime) * runningSpeed);
+            uint64_t rightNow = timeSinceEpochMS();
+            return (((rightNow - startTime) * runningSpeed)/1000);
         }
 
         uint64_t elapsedMS(uint64_t s) {
