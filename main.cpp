@@ -6,6 +6,8 @@
 #include <chrono>
 #include <thread>
 #include <unistd.h>
+#include <future>
+#include <vector>
 #include "clock.h"
 #include "classes/human.h"
 #include "humanactions.h"
