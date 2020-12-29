@@ -15,7 +15,7 @@
 //#include "classes/fraction.h"
 //#include "utilfuncs.h"
 
-int runningSpeed = 1000;
+int runningSpeed = 10;
 int computingInterval = 1000;
 
 int main()
@@ -39,7 +39,7 @@ int main()
 
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-        std::cout << "shit: " << max.getShit() << std::endl;
+        //std::cout << "shit: " << max.getShit() << std::endl;
     }
   
 
