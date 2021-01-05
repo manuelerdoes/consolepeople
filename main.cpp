@@ -29,13 +29,9 @@ int main()
     Human manu("Manu", "male", "brown", clock1);
     Human max("Max", "male", "blonde", clock1);
 
-    int maxeslife = liveLife(max, clock1);
-    std::this_thread::sleep_for(std::chrono::milliseconds(333));
-    //int manuslife = liveLife(manu, clock1);
 
-    //uint64_t testo = clock1.timeSinceEpochMS();
-    //std::cout << "testo: " << testo << std::endl;
-
+    std::thread maxeslife = liveLife(max, clock1);
+    std::thread manuslife = liveLife(manu, clock1);
 
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(2000));
@@ -43,13 +39,8 @@ int main()
     }
   
 
-
-
-   
-
-
-
-    //std::cout << "gender of the person: " << janet.getGender() << std::endl;
+    maxeslife.join();
+    manuslife.join();
 
     return 0;
 }

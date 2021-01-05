@@ -3,8 +3,9 @@
 
 extern int computingInterval;
 
-void lifeThread(Human h, Clock c) {
+void lifeThread(Human h, Human* hptr, Clock c) {
     std::cout << "starting life of " << h.getName() << std::endl;
+
     unsigned long counter = 0;
     while (true) {
         // print age
@@ -22,8 +23,8 @@ void lifeThread(Human h, Clock c) {
             std::cout << h.getName() << " is " << age / 31536000 << " year(s) old" << std::endl; 
         }
 
-        if (h.getPiss() == 100) { h.doPiss(); }
-        if (h.getShit() == 100) { h.doShit(); }
+        if (h.getPiss() == 100) { h.doPiss(); *hptr = h; }
+        if (h.getShit() == 100) { h.doShit(); *hptr = h; }
 
 
         // end of second-cycle
@@ -32,10 +33,12 @@ void lifeThread(Human h, Clock c) {
     }
 }
 
-int liveLife(Human h, Clock c) {
-    std::thread t(&lifeThread, h, c);
-    t.detach();
-    return 0;
+std::thread liveLife(Human &h, Clock c) {
+    Human* hpointer = &h;
+
+    std::thread t(&lifeThread, h, hpointer, c);
+    
+    return t;
 }
 
 
