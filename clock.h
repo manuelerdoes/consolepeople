@@ -27,7 +27,8 @@ class Clock {
 
         uint64_t elapsedS(uint64_t s) {
             uint64_t rightNow = timeSinceEpochMS();
-            return (((rightNow - s) * runningSpeed)/1000);
+            uint64_t fedisch = (((rightNow - s) * runningSpeed)/1000);
+            return fedisch;
         }
 
 

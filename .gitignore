@@ -34,3 +34,6 @@
 # IDE Settings
 .vscode/
 *.dSYM
+
+# Log
+*.log

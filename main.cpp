@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <random>
 #include <numeric>
@@ -8,8 +9,10 @@
 #include <unistd.h>
 #include <future>
 #include <vector>
+#include <mutex>
 #include "clock.h"
 #include "classes/human.h"
+#include "io.h"
 #include "humanactions.h"
 #include "humanlife.h"
 //#include "classes/fraction.h"
@@ -18,12 +21,15 @@
 int runningSpeed = 10;
 int computingInterval = 1000;
 
+Clock clock1;
+
+std::mutex Mutex1;
+std::mutex Mutex2;
+
 int main()
 {
     //init
     computingInterval = computingInterval / runningSpeed;
-
-    Clock clock1;
 
     Human ida("Ida", "female", "brown", clock1);
     Human manu("Manu", "male", "brown", clock1);
@@ -31,16 +37,17 @@ int main()
 
 
     std::thread maxeslife = liveLife(max, clock1);
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     std::thread manuslife = liveLife(manu, clock1);
 
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-        //std::cout << "shit: " << max.getShit() << std::endl;
     }
   
 
     maxeslife.join();
     manuslife.join();
+    mainLog.close();
 
     return 0;
 }

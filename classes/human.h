@@ -113,7 +113,7 @@ class Human {
         std::string getGender() { return gender; }
         std::string getHaircolor() { return haircolor; }
         float getBmi() { return bmi; }
-        int getBirthday() { return birthday; }
+        uint64_t getBirthday() { return birthday; }
         int getAmbition() { return ambition; }
         int getHumor() { return humor; }
         int getEmpathy() { return empathy; }
