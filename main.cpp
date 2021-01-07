@@ -10,6 +10,7 @@
 #include <future>
 #include <vector>
 #include <mutex>
+#include <sqlite3.h>
 #include "clock.h"
 #include "classes/human.h"
 #include "io.h"

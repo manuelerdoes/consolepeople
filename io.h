@@ -7,7 +7,17 @@ extern int computingInterval;
 extern std::mutex Mutex1;
 extern std::mutex Mutex2;
 
+// Open Files
 std::ofstream mainLog("main.log", mainLog.app);
+
+// Open DB
+sqlite3* db;
+char* errorMessage = 0;
+int rc = sqlite3_open("cp.db", &db);
+//(rc) ? (fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db))) : (fprintf(stderr, "Opened database successfully\n"));
+
+
+// Funcs
 
 template <class Textout>
 void writeToMainLog(Textout s, Human h) {
@@ -25,6 +35,8 @@ void coutToConsole(Coutput o, Human h) {
     writeToMainLog(o, h);
     std::cout << h.getName() << ": " << o << std::endl;
 }
+
+
 
 
 
