@@ -10,11 +10,35 @@ extern std::mutex Mutex2;
 // Open Files
 std::ofstream mainLog("main.log", mainLog.app);
 
-// Open DB
+// DB Stuff
+static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
+   int i;
+   for(i = 0; i<argc; i++) {
+      printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+   }
+   printf("\n");
+   return 0;
+}
+
 sqlite3* db;
 char* errorMessage = 0;
-int rc = sqlite3_open("cp.db", &db);
-//(rc) ? (fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db))) : (fprintf(stderr, "Opened database successfully\n"));
+
+int initDB() {
+    int rc = sqlite3_open("cp.db", &db);
+    if (rc) { return 1; }
+
+    const char* sql = "CREATE TABLE human("  \
+        "id INT PRIMARY KEY     NOT NULL," \
+        "name           TEXT    NOT NULL," \
+        "age            INT     NOT NULL," \
+        "gender         CHAR(50)," \
+        "haircolor      TEXT );";
+
+    rc = sqlite3_exec(db, sql, callback, 0, &errorMessage);
+    if (rc != SQLITE_OK) { return 2; }
+
+    return 0;
+}
 
 
 // Funcs
@@ -36,7 +60,15 @@ void coutToConsole(Coutput o, Human h) {
     std::cout << h.getName() << ": " << o << std::endl;
 }
 
+int saveToDB() {
+    return 0;
+} 
 
+int insertHumanToDB(Human h) {
+    const char* sql =   "INSERT INTO human (id, name, age, gender, haircolor) " \
+                        "VALUES (NULL, )";
+    return 0;
+}
 
 
 

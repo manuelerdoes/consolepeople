@@ -35,5 +35,6 @@
 .vscode/
 *.dSYM
 
-# Log
+# Program specific stuff
 *.log
+*.db

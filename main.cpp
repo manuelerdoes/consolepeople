@@ -36,10 +36,13 @@ int main()
     Human manu("Manu", "male", "brown", clock1);
     Human max("Max", "male", "blonde", clock1);
 
+    initDB();
 
     std::thread maxeslife = liveLife(max, clock1);
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     std::thread manuslife = liveLife(manu, clock1);
+    std::thread idaslife = liveLife(ida, clock1);
+
 
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(2000));
@@ -48,6 +51,8 @@ int main()
 
     maxeslife.join();
     manuslife.join();
+    idaslife.join();
+    sqlite3_close(db);
     mainLog.close();
 
     return 0;
