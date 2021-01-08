@@ -10,6 +10,7 @@
 #include <future>
 #include <vector>
 #include <mutex>
+#include <ctime>
 #include <sqlite3.h>
 #include "clock.h"
 #include "classes/human.h"
@@ -30,13 +31,17 @@ std::mutex Mutex2;
 int main()
 {
     //init
+    int initdb = initDB();
+    if (initdb == 1) { exit(EXIT_FAILURE); }
+
     computingInterval = computingInterval / runningSpeed;
 
     Human ida("Ida", "female", "brown", clock1);
     Human manu("Manu", "male", "brown", clock1);
     Human max("Max", "male", "blonde", clock1);
 
-    initDB();
+    int insi = insertHumanToDB(ida);
+    if (insi == 2) { exit(EXIT_FAILURE); } 
 
     std::thread maxeslife = liveLife(max, clock1);
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));

@@ -9,6 +9,17 @@ extern std::mutex Mutex2;
 
 // Open Files
 std::ofstream mainLog("main.log", mainLog.app);
+std::ofstream errorLog("error.log", errorLog.app);
+
+// Error Log
+template <class Errorout>
+void writeToErrorLog(std::string desc, Errorout e) {
+    time_t now = time(0);
+    std::string nowstr = ctime(&now);
+    nowstr.pop_back();
+    errorLog << "[" + nowstr + "] " + desc + ": ";
+    errorLog << e << std::endl;
+}
 
 // DB Stuff
 static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
@@ -22,17 +33,21 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
 
 sqlite3* db;
 char* errorMessage = 0;
+int rc = sqlite3_open("cp.db", &db);
 
 int initDB() {
-    int rc = sqlite3_open("cp.db", &db);
-    if (rc) { return 1; }
+    
+    if (rc) { 
+        writeToErrorLog("SQL ERROR", sqlite3_errmsg(db));
+        return 1; 
+    }
 
     const char* sql = "CREATE TABLE human("  \
-        "id INT PRIMARY KEY     NOT NULL," \
-        "name           TEXT    NOT NULL," \
-        "age            INT     NOT NULL," \
-        "gender         CHAR(50)," \
-        "haircolor      TEXT );";
+        "name           TEXT," \
+        "gender         TEXT," \
+        "haircolor      TEXT," \
+        "bmi            REAL, " \
+        "birthday       TEXT);";
 
     rc = sqlite3_exec(db, sql, callback, 0, &errorMessage);
     if (rc != SQLITE_OK) { return 2; }
@@ -65,8 +80,16 @@ int saveToDB() {
 } 
 
 int insertHumanToDB(Human h) {
-    const char* sql =   "INSERT INTO human (id, name, age, gender, haircolor) " \
-                        "VALUES (NULL, )";
+    std::string query =   "INSERT INTO human (name, birthday, gender, haircolor) " \
+                        "VALUES ('" + h.getName() + "', " \
+                        "'" + std::to_string(h.getBirthday()) + "', " \
+                        "'" + h.getGender() + "', '" + h.getHaircolor() + "')"; 
+                        
+    rc = sqlite3_exec(db, query.c_str(), callback, 0, &errorMessage);
+    if (rc != SQLITE_OK) { 
+        writeToErrorLog("SQL ERROR", errorMessage);
+        sqlite3_free(errorMessage);
+        return 2; }
     return 0;
 }
 
