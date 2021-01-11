@@ -47,7 +47,27 @@ int initDB() {
         "gender         TEXT," \
         "haircolor      TEXT," \
         "bmi            REAL, " \
-        "birthday       TEXT);";
+        "birthday       TEXT, " \
+        "ambition       INT, " \
+        "humor          INT, " \
+        "empathy        INT, " \
+        "selfawareness  INT, " \
+        "selfpity       INT, " \
+        "introvert      INT, " \
+        "sexuality      INT, " \
+        "painsensitivity INT, " \
+        "innergender    INT, " \
+        "talkativity    INT, " \
+        "logicscore     INT, " \
+        "feelingscore   INT, " \
+        "mood           INT, " \
+        "eat            INT, " \
+        "piss           INT, " \
+        "shit           INT, " \
+        "sleep          INT, " \
+        "company        INT, " \
+        "love           INT, " \
+        "sex            INT);";
 
     rc = sqlite3_exec(db, sql, callback, 0, &errorMessage);
     if (rc != SQLITE_OK) { return 2; }
@@ -80,10 +100,21 @@ int saveToDB() {
 } 
 
 int insertHumanToDB(Human h) {
-    std::string query =   "INSERT INTO human (name, birthday, gender, haircolor) " \
+    std::string query =   "INSERT INTO human " \
                         "VALUES ('" + h.getName() + "', " \
+                        "'" + h.getGender() + "', " \
+                        "'" + h.getHaircolor() + "', '" + h.getBmi() +  "', " \
                         "'" + std::to_string(h.getBirthday()) + "', " \
-                        "'" + h.getGender() + "', '" + h.getHaircolor() + "')"; 
+                        "'" + h.getAmbition() + "', '" + h.getHumor() +  "', " \
+                        "'" + h.getEmpathy() + "', '" + h.getSelfawareness() +  "', " \
+                        "'" + h.getSelfpity() + "', '" + h.getIntrovert() +  "', " \
+                        "'" + h.getSexuality() + "', '" + h.getPainsensitivity() +  "', " \
+                        "'" + h.getInnergender() + "', '" + h.getTalkativity() +  "', " \
+                        "'" + h.getLogicscore() + "', '" + h.getFeelingscore() +  "', " \
+                        "'" + h.getMood() + "', '" + h.getEat() +  "', " \
+                        "'" + h.getPiss() + "', '" + h.getShit() +  "', " \
+                        "'" + h.getSleep() + "', '" + h.getCompany() +  "', " \
+                        "'" + h.getLove() + "', '" + h.getSex() + "');";
                         
     rc = sqlite3_exec(db, query.c_str(), callback, 0, &errorMessage);
     if (rc != SQLITE_OK) { 
