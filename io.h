@@ -100,21 +100,20 @@ int saveToDB() {
 } 
 
 int insertHumanToDB(Human h) {
-    std::string query =   "INSERT INTO human " \
-                        "VALUES ('" + h.getName() + "', " \
-                        "'" + h.getGender() + "', " \
-                        "'" + h.getHaircolor() + "', '" + h.getBmi() +  "', " \
-                        "'" + std::to_string(h.getBirthday()) + "', " \
-                        "'" + h.getAmbition() + "', '" + h.getHumor() +  "', " \
-                        "'" + h.getEmpathy() + "', '" + h.getSelfawareness() +  "', " \
-                        "'" + h.getSelfpity() + "', '" + h.getIntrovert() +  "', " \
-                        "'" + h.getSexuality() + "', '" + h.getPainsensitivity() +  "', " \
-                        "'" + h.getInnergender() + "', '" + h.getTalkativity() +  "', " \
-                        "'" + h.getLogicscore() + "', '" + h.getFeelingscore() +  "', " \
-                        "'" + h.getMood() + "', '" + h.getEat() +  "', " \
-                        "'" + h.getPiss() + "', '" + h.getShit() +  "', " \
-                        "'" + h.getSleep() + "', '" + h.getCompany() +  "', " \
-                        "'" + h.getLove() + "', '" + h.getSex() + "');";
+    std::string query = "INSERT INTO human " \
+                "VALUES ('" + h.getName() + "', " \
+                "'" + h.getGender() + "', '" + h.getHaircolor() + "', " \
+                "'" + std::to_string(h.getBmi()) +  "', '" + std::to_string(h.getBirthday()) + "', " \
+                "'" + std::to_string(h.getAmbition()) + "', '" + std::to_string(h.getHumor()) +  "', " \
+                "'" + std::to_string(h.getEmpathy()) + "', '" + std::to_string(h.getSelfawareness()) +  "', " \
+                "'" + std::to_string(h.getSelfpity()) + "', '" + std::to_string(h.getIntrovert()) +  "', " \
+                "'" + std::to_string(h.getSexuality()) + "', '" + std::to_string(h.getPainsensitivity()) +  "', " \
+                "'" + std::to_string(h.getInnergender()) + "', '" + std::to_string(h.getTalkativity()) +  "', " \
+                "'" + std::to_string(h.getLogicscore()) + "', '" + std::to_string(h.getFeelingscore()) +  "', " \
+                "'" + std::to_string(h.getMood()) + "', '" + std::to_string(h.getEat()) +  "', " \
+                "'" + std::to_string(h.getPiss()) + "', '" + std::to_string(h.getShit()) +  "', " \
+                "'" + std::to_string(h.getSleep()) + "', '" + std::to_string(h.getCompany()) +  "', " \
+                "'" + std::to_string(h.getLove()) + "', '" + std::to_string(h.getSex()) + "');";
                         
     rc = sqlite3_exec(db, query.c_str(), callback, 0, &errorMessage);
     if (rc != SQLITE_OK) { 
@@ -124,7 +123,51 @@ int insertHumanToDB(Human h) {
     return 0;
 }
 
+int updateHumanAttributeToDB(Human h, std::string s) {
+    std::string query = "UPDATE human SET " + s + " = " + h.getStringAttribute(s) + " WHERE name = '" + h.getName() + "';";
+    rc = sqlite3_exec(db, query.c_str(), callback, 0, &errorMessage);
+    if (rc != SQLITE_OK) { 
+        writeToErrorLog("SQL ERROR", errorMessage);
+        sqlite3_free(errorMessage);
+        return 2; }
+    return 0;
+}
 
+int updateHumanToDB(Human h) {
+    int dbok = updateHumanAttributeToDB(h, "bmi");
+    dbok += updateHumanAttributeToDB(h, "ambition");
+    dbok += updateHumanAttributeToDB(h, "humor");
+    dbok += updateHumanAttributeToDB(h, "empathy");
+    dbok += updateHumanAttributeToDB(h, "selfawareness");
+    dbok += updateHumanAttributeToDB(h, "selfpity");
+    dbok += updateHumanAttributeToDB(h, "introvert");
+    dbok += updateHumanAttributeToDB(h, "sexuality");
+    dbok += updateHumanAttributeToDB(h, "painsensitivity");
+    dbok += updateHumanAttributeToDB(h, "innergender");
+    dbok += updateHumanAttributeToDB(h, "talkativity");
+    dbok += updateHumanAttributeToDB(h, "logicscore");
+    dbok += updateHumanAttributeToDB(h, "feelingscore");
+    dbok += updateHumanAttributeToDB(h, "mood");
+    dbok += updateHumanAttributeToDB(h, "eat");
+    dbok += updateHumanAttributeToDB(h, "piss");
+    dbok += updateHumanAttributeToDB(h, "shit");
+    dbok += updateHumanAttributeToDB(h, "sleep");
+    dbok += updateHumanAttributeToDB(h, "company");
+    dbok += updateHumanAttributeToDB(h, "love");
+    dbok += updateHumanAttributeToDB(h, "sex");
+    if (dbok > 0) { return 1; }
+    return 0;
+}
+
+std::string getHumanAttributeFromDB(Human h, std::string s) {
+    std::string query = "SELECT " + s + " FROM human WHERE name = '" + h.getName() + "';";
+    rc = sqlite3_exec(db, query.c_str(), callback, 0, &errorMessage);
+    if (rc != SQLITE_OK) { 
+        writeToErrorLog("SQL ERROR", errorMessage);
+        sqlite3_free(errorMessage);
+        return 2; }
+    return 0;
+}
 
 
 

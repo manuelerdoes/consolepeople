@@ -136,6 +136,36 @@ class Human {
         int getLove() { return love; }
         int getSex () { return sex; }
 
+        std::string getStringAttribute(std::string s) {
+            if (s == "name") { return name; }
+            if (s == "gender") { return gender; }
+            if (s == "haircolor" ) { return haircolor; }
+            if (s == "bmi" ) { return std::to_string(bmi); }
+            if (s == "birthday" ) { return std::to_string(birthday); }
+            if (s == "ambition" ) { return std::to_string(ambition); }
+            if (s == "humor" ) { return std::to_string(humor); }
+            if (s == "empathy" ) { return std::to_string(empathy); }
+            if (s == "selfawareness" ) { return std::to_string(selfawareness); }
+            if (s == "selfpity" ) { return std::to_string(selfpity); }
+            if (s == "introvert" ) { return std::to_string(introvert); }
+            if (s == "sexuality" ) { return std::to_string(sexuality); }
+            if (s == "painsensitivity" ) { return std::to_string(painsensitivity); }
+            if (s == "innergender" ) { return std::to_string(innergender); }
+            if (s == "talkativity" ) { return std::to_string(talkativity); }
+            if (s == "logicscore" ) { return std::to_string(logicscore); }
+            if (s == "feelingscore" ) { return std::to_string(feelingscore); }
+            if (s == "mood" ) { return std::to_string(mood); }
+            if (s == "eat" ) { return std::to_string(eat); }
+            if (s == "piss" ) { return std::to_string(piss); }
+            if (s == "shit" ) { return std::to_string(shit); }
+            if (s == "sleep" ) { return std::to_string(sleep); }
+            if (s == "company" ) { return std::to_string(company); }
+            if (s == "love" ) { return std::to_string(love); }
+            if (s == "sex" ) { return std::to_string(sex); }
+            return "nada";
+        }
+
+
 
 };
 

@@ -36,24 +36,33 @@ int main()
 
     computingInterval = computingInterval / runningSpeed;
 
+    // create human objects
     Human ida("Ida", "female", "brown", clock1);
     Human manu("Manu", "male", "brown", clock1);
     Human max("Max", "male", "blonde", clock1);
 
+    // save humans in DB
     int insi = insertHumanToDB(ida);
-    if (insi == 2) { exit(EXIT_FAILURE); } 
+    insi += insertHumanToDB(manu);
+    insi += insertHumanToDB(max);
+    if (insi > 0) { exit(EXIT_FAILURE); } 
 
+    // start threads for each human
     std::thread maxeslife = liveLife(max, clock1);
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     std::thread manuslife = liveLife(manu, clock1);
     std::thread idaslife = liveLife(ida, clock1);
 
-
+    // main thread waiting and updating DB
     while (true) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(10000));
+        int upi = updateHumanToDB(ida);
+        upi += updateHumanToDB(manu);
+        upi += updateHumanToDB(max);
+        if (upi > 0) { std::cout << "problem with saving Humans to DB. See error.log" << std::endl; }
     }
   
-
+    // cleanup
     maxeslife.join();
     manuslife.join();
     idaslife.join();
