@@ -165,8 +165,9 @@ std::string getHumanAttributeFromDB(Human h, std::string s) {
     if (rc != SQLITE_OK) { 
         writeToErrorLog("SQL ERROR", errorMessage);
         sqlite3_free(errorMessage);
-        return 2; }
-    return 0;
+        //return 2; 
+    }
+    return "null";
 }
 
 
