@@ -26,6 +26,22 @@ void Human::doShit() {
     shit = 0;
 }
 
+void Human::doCalc() {
+    uint64_t mumu = 1;
+    int pepe;
+    for (unsigned long i = 90000000000; i >= 0; i--) {
+        pepe = 0;
+        for (int c = 1; c <= mumu; c++) {
+            if (mumu % c == 0) { pepe++; }
+        }
+
+        if (pepe <= 2) {
+            coutToConsole("found a prime -> " + std::to_string(mumu), *this);
+        }
+        mumu++;
+    }
+}
+
 
 
 

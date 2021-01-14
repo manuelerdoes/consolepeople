@@ -107,6 +107,7 @@ class Human {
 // outside functions
         void doPiss(void);
         void doShit(void);
+        void doCalc(void);
 
 // getters & setters
         std::string getName() { return name; }
