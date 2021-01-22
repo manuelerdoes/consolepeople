@@ -1,0 +1,9 @@
+1. New human attribute:
+    - human.h: declare variable
+    - human.h: define variable in constructor
+    - human.h: write getter/setter function
+    - human.h: add to getStringAttribute()
+    - human.h: optional -> add to printAttributes
+    - io.h: add to initDB()
+    - io.h: add to insertHumanToDB()
+    - io.h: add to updateHumanToDB()

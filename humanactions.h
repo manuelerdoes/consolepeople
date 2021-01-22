@@ -36,7 +36,7 @@ void Human::doCalc() {
         }
 
         if (pepe <= 2) {
-            coutToConsole("found a prime -> " + std::to_string(mumu), *this);
+            //coutToConsole("found a prime -> " + std::to_string(mumu), *this);
         }
         mumu++;
     }

@@ -30,7 +30,6 @@ void lifeThread(Human h, Human* hptr, Clock c) {
 
         if (h.getPiss() == 100) { h.doPiss(); *hptr = h; }
         //if (h.getShit() == 100) { h.doShit(); *hptr = h; }
-        h.doCalc();
 
 
         // end of second-cycle

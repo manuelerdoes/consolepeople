@@ -161,12 +161,10 @@ int updateHumanToDB(Human h) {
 
 std::string getHumanAttributeFromDB(Human h, std::string s) {
     std::string query = "SELECT " + s + " FROM human WHERE name = '" + h.getName() + "';";
-    rc = sqlite3_exec(db, query.c_str(), callback, 0, &errorMessage);
-    if (rc != SQLITE_OK) { 
-        writeToErrorLog("SQL ERROR", errorMessage);
-        sqlite3_free(errorMessage);
-        //return 2; 
-    }
+    
+    std::string result;
+    //result = (char *)sqlite3_column_text(query, 0);
+
     return "null";
 }
 
