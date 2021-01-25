@@ -161,11 +161,30 @@ int updateHumanToDB(Human h) {
 
 std::string getHumanAttributeFromDB(Human h, std::string s) {
     std::string query = "SELECT " + s + " FROM human WHERE name = '" + h.getName() + "';";
-    
+    sqlite3_stmt * stmt;
     std::string result;
-    //result = (char *)sqlite3_column_text(query, 0);
+    sqlite3_prepare(db, query.c_str(), -1, &stmt, NULL);
+    sqlite3_step(stmt);
+    result = (char *)sqlite3_column_text(stmt, 0);
+    return result;
+}
 
-    return "null";
+int getHumanIntAttributeFromDB(Human h, std::string s) {
+    std::string query = "SELECT " + s + " FROM human WHERE name = '" + h.getName() + "';";
+    sqlite3_stmt * stmt;
+    int result;
+    sqlite3_prepare(db, query.c_str(), -1, &stmt, NULL);
+    sqlite3_step(stmt);
+    result = (int)sqlite3_column_text(stmt, 0);
+    return result;
+}
+
+void loadHumanFromDB(Human h) {
+    h.setGender(getHumanAttributeFromDB(h, "gender"));
+    h.setHaircolor(getHumanAttributeFromDB(h, "haircolor"));
+    h.setBmi(std::stof(getHumanAttributeFromDB(h, "bmi")));
+    h.setBirthday(std::stoi(getHumanAttributeFromDB(h, "birthday")));
+    h.setAmbition(std::stoi(getHumanAttributeFromDB(h, "ambition")));
 }
 
 
