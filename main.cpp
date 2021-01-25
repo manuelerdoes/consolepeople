@@ -59,6 +59,8 @@ int main()
         int upi = updateHumanToDB(ida);
         upi += updateHumanToDB(manu);
         upi += updateHumanToDB(max);
+        std::string teste99 = getHumanAttributeFromDB(manu, "piss");
+        std::cout << "tescht: " << teste99 << std::endl;
         if (upi > 0) { std::cout << "problem with saving Humans to DB. See error.log" << std::endl; }
     }
   
