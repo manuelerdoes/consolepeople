@@ -112,30 +112,53 @@ class Human {
 // getters & setters
         std::string getName() { return name; }
         std::string getGender() { return gender; }
+        void setGender(std::string g) { gender = g; }
         std::string getHaircolor() { return haircolor; }
+        void setHaircolor(std::string hc) { haircolor = hc; }
         float getBmi() { return bmi; }
+        void setBmi(float b) { bmi = b; }
         uint64_t getBirthday() { return birthday; }
+        void setBirthday(uint64_t b) { birthday = b; }
         int getAmbition() { return ambition; }
+        void setAmbition(int a) { ambition = a; }
         int getHumor() { return humor; }
+        void setHumor(int hu) { humor = hu; }
         int getEmpathy() { return empathy; }
+        void setEmpathy(int e) { empathy = e; }
         int getSelfawareness() { return selfawareness; }
+        void setSelfawareness(int s) { selfawareness = s; }
         int getSelfpity() { return selfpity; }
+        void setSelfpity(int s) { selfpity = s; }
         int getIntrovert() { return introvert; }
+        void setIntrovert(int i) { introvert = i; }
         int getSexuality() { return sexuality; }
+        void setSexuality(int s) { sexuality = s; }
         int getPainsensitivity() { return painsensitivity; }
+        void setPainsensitivity(int p) { painsensitivity = p; }
         int getInnergender() { return innergender; }
+        void setInnergender(int i) { innergender = i; }
         int getTalkativity() { return talkativity; }
+        void setTalkativity(int t) { talkativity = t; }
         int getLogicscore() { return logicscore; }
+        void setLogicscore(int l) { logicscore = l; }
         int getFeelingscore() { return feelingscore; }
+        void setFeelingscore(int f) { feelingscore = f; }
         int getMood() { return mood; }
+        void setMood(int m) { mood = m; }
         int getEat() { return eat; }
+        void setEat(int e) { eat = e; }
         int getPiss() { return piss; }
         void setPiss(int p) { piss = p; }
         int getShit() { return shit; }
+        void setShit(int s) { shit = s; }
         int getSleep() { return sleep; }
+        void setSleep(int s) { sleep = s; }
         int getCompany() { return company; }
+        void setCompany(int c) { company = c; }
         int getLove() { return love; }
+        void setLove(int l) { love = l; }
         int getSex () { return sex; }
+        void setSex(int s) { sex = s; }
 
         std::string getStringAttribute(std::string s) {
             if (s == "name") { return name; }
