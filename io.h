@@ -169,22 +169,63 @@ std::string getHumanAttributeFromDB(Human h, std::string s) {
     return result;
 }
 
-int getHumanIntAttributeFromDB(Human h, std::string s) {
-    std::string query = "SELECT " + s + " FROM human WHERE name = '" + h.getName() + "';";
-    sqlite3_stmt * stmt;
-    int result;
-    sqlite3_prepare(db, query.c_str(), -1, &stmt, NULL);
-    sqlite3_step(stmt);
-    result = (int)sqlite3_column_text(stmt, 0);
-    return result;
-}
+int loadHumanFromDB(Human h) {
+    int sumus = 0;
+    std::vector<std::string> haircolors {"brown", "black", "blonde", "white", "grey"};
 
-void loadHumanFromDB(Human h) {
     h.setGender(getHumanAttributeFromDB(h, "gender"));
+    if (h.getGender() == "male" || h.getGender() == "female") { sumus++; }
     h.setHaircolor(getHumanAttributeFromDB(h, "haircolor"));
+    for (int i = 0; i < haircolors.size(); i++) {
+        if (h.getHaircolor() == haircolors[i]) { sumus++; }
+    }
     h.setBmi(std::stof(getHumanAttributeFromDB(h, "bmi")));
+    if (h.getBmi() >= 0 && h.getBmi() <= 100) { sumus++ ;}
     h.setBirthday(std::stoi(getHumanAttributeFromDB(h, "birthday")));
+    if (h.getBirthday() >= 100000 && h.getBirthday() <= 9999611651931323) { sumus++; }
     h.setAmbition(std::stoi(getHumanAttributeFromDB(h, "ambition")));
+    if (h.getAmbition() >= 0 && h.getAmbition() <= 100) { sumus++; }
+    h.setHumor(std::stoi(getHumanAttributeFromDB(h, "humor")));
+    if (h.getHumor() >= 0 && h.getHumor() <= 100) { sumus++; }
+    h.setEmpathy(std::stoi(getHumanAttributeFromDB(h, "empathy")));
+    if (h.getEmpathy() >= 0 && h.getEmpathy() <= 100) { sumus++; }
+    h.setSelfawareness(std::stoi(getHumanAttributeFromDB(h, "selfawareness")));
+    if (h.getSelfawareness() >= 0 && h.getSelfawareness() <= 100) { sumus++; }
+    h.setSelfpity(std::stoi(getHumanAttributeFromDB(h, "selfpity")));
+    if (h.getSelfpity() >= 0 && h.getSelfpity() <= 100) { sumus++; }
+    h.setIntrovert(std::stoi(getHumanAttributeFromDB(h, "introvert")));
+    if (h.getIntrovert() >= 0 && h.getIntrovert() <= 100) { sumus++; } 
+    h.setSexuality(std::stoi(getHumanAttributeFromDB(h, "sexuality")));
+    if (h.getSexuality() >= 0 && h.getSexuality() <= 10) { sumus++; }
+    h.setPainsensitivity(std::stoi(getHumanAttributeFromDB(h, "painsensitivity")));
+    if (h.getPainsensitivity() >= 0 && h.getPainsensitivity() <= 100) { sumus++; }
+    h.setInnergender(std::stoi(getHumanAttributeFromDB(h, "innergender")));
+    if (h.getInnergender() >= 0 && h.getInnergender() <= 10) { sumus++; }
+    h.setTalkativity(std::stoi(getHumanAttributeFromDB(h, "talkativity")));
+    if (h.getTalkativity() >= 0 && h.getTalkativity() <= 100) { sumus++; }
+    h.setLogicscore(std::stoi(getHumanAttributeFromDB(h, "logicscore")));
+    if (h.getLogicscore() >= 0 && h.getLogicscore() <= 100) { sumus++; }
+    h.setFeelingscore(std::stoi(getHumanAttributeFromDB(h, "feelingscore")));
+    if (h.getFeelingscore() >= 0 && h.getFeelingscore() <= 100) { sumus++; }
+    h.setMood(std::stoi(getHumanAttributeFromDB(h, "mood")));
+    if (h.getMood() >= 0 && h.getMood() <= 100) { sumus++; }
+    h.setEat(std::stoi(getHumanAttributeFromDB(h, "eat")));
+    if (h.getEat() >= 0 && h.getEat() <= 100) { sumus++; }
+    h.setPiss(std::stoi(getHumanAttributeFromDB(h, "piss")));
+    if (h.getPiss() >= 0 && h.getPiss() <= 100) { sumus++; }
+    h.setShit(std::stoi(getHumanAttributeFromDB(h, "shit")));
+    if (h.getShit() >= 0 && h.getShit() <= 100) { sumus++; }
+    h.setSleep(std::stoi(getHumanAttributeFromDB(h, "sleep")));
+    if (h.getSleep() >= 0 && h.getSleep() <= 100) { sumus++; }
+    h.setCompany(std::stoi(getHumanAttributeFromDB(h, "company")));
+    if (h.getCompany() >= 0 && h.getCompany() <= 100) { sumus++; }
+    h.setLove(std::stoi(getHumanAttributeFromDB(h, "love")));
+    if (h.getLove() >= 0 && h.getLove() <= 100) { sumus++; }
+    h.setSex(std::stoi(getHumanAttributeFromDB(h, "sex")));
+    if (h.getSex() >= 0 && h.getSex() <= 100) { sumus++; }
+
+    if (sumus != 24) { return 1; }
+    return 0;
 }
 
 

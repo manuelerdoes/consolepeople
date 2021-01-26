@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+//#include <filesystem>
 #include <random>
 #include <numeric>
 #include <iomanip>
@@ -41,6 +42,14 @@ int main()
     Human manu("Manu", "male", "brown", clock1);
     Human max("Max", "male", "blonde", clock1);
 
+    // load humans from DB
+    // if (std::filesystem::exists("cp.db")) {
+    //     if(loadHumanFromDB(ida)) { std::cout << "db entries for ida are not compliant" << std::endl; exit(EXIT_FAILURE); }
+    //     if(loadHumanFromDB(manu)) { std::cout << "db entries for manu are not compliant" << std::endl; exit(EXIT_FAILURE); }
+    //     if(loadHumanFromDB(max)) { std::cout << "db entries for max are not compliant" << std::endl; exit(EXIT_FAILURE); }
+    // }
+
+
     // save humans in DB
     int insi = insertHumanToDB(ida);
     insi += insertHumanToDB(manu);
@@ -53,14 +62,16 @@ int main()
     std::thread manuslife = liveLife(manu, clock1);
     std::thread idaslife = liveLife(ida, clock1);
 
+    std::cout << "manuburz: " << manu.getBirthday() << std::endl;
+
     // main thread waiting and updating DB
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(10000));
         int upi = updateHumanToDB(ida);
         upi += updateHumanToDB(manu);
         upi += updateHumanToDB(max);
-        std::string teste99 = getHumanAttributeFromDB(manu, "piss");
-        std::cout << "tescht: " << teste99 << std::endl;
+        // std::string teste99 = getHumanAttributeFromDB(manu, "piss");
+        // std::cout << "tescht: " << teste99 << std::endl;
         if (upi > 0) { std::cout << "problem with saving Humans to DB. See error.log" << std::endl; }
     }
   

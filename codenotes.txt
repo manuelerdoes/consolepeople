@@ -7,3 +7,7 @@
     - io.h: add to initDB()
     - io.h: add to insertHumanToDB()
     - io.h: add to updateHumanToDB()
+    - io.h: add to loadHumanFromDB()
+
+2. Manage allowed attribute values in loadHumanFromDB()
+    - For instance you can add or remove allowed haircolors in haircolors vector inside of the function.
