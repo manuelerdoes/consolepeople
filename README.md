@@ -8,4 +8,4 @@ Needs following libs: pthread, sqlite3
 
 e.g. g++ -std=c++17 -lpthread -lsqlite3 -g main.cpp -o consolepeople
 
-It runs on Linux and MacOS. Should run on Windows too, but i didn't check.
+It runs on Linux and MacOS. Should run on Windows too, but I didn't check.
