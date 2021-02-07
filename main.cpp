@@ -18,7 +18,6 @@
 #include "io.h"
 #include "humanactions.h"
 #include "humanlife.h"
-//#include "bgsaving.h"
 //#include "classes/fraction.h"
 //#include "utilfuncs.h"
 
@@ -64,29 +63,26 @@ int main()
     if (upi > 0) { std::cout << "problem with saving Humans to DB. See error.log" << std::endl; }
 
     // start threads for each human
-    std::thread maxeslife = liveLife(max, clock1);
-    std::thread maxessave = saveLife(max);
-    std::thread manuslife = liveLife(manu, clock1);
-    std::thread manussave = saveLife(manu);
-    std::thread idaslife = liveLife(ida, clock1);
-    std::thread idassave = saveLife(ida);
+    std::string runflag = "run";
+    std::thread maxeslife = liveLife(max, clock1, runflag);
+    std::thread maxessave = saveLife(max, runflag);
+    std::thread manuslife = liveLife(manu, clock1, runflag);
+    std::thread manussave = saveLife(manu, runflag);
+    std::thread idaslife = liveLife(ida, clock1, runflag);
+    std::thread idassave = saveLife(ida, runflag);
 
-    // main thread waiting and updating DB
+    // main thread console
     while (true) {
         std::string input;
         std::cout << "what: "; 
         std::cin >> input;
-        //std::cout << "wort 1: " << input[0] << " wort 2: " << input[1] << std::endl;
-
-
-        //std::this_thread::sleep_for(std::chrono::milliseconds(10000));
-        // int upi = updateHumanToDB(ida);
-        // upi += updateHumanToDB(manu);
-        // upi += updateHumanToDB(max);
-        // if (upi > 0) { std::cout << "problem with saving Humans to DB. See error.log" << std::endl; }
+        if (input == "exit") {
+            break;
+        }
     }
   
     // cleanup
+    runflag = "stop";
     maxeslife.join();
     manuslife.join();
     idaslife.join();

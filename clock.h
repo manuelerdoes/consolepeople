@@ -7,6 +7,8 @@ extern int runningSpeed;
 class Clock {
     private:
         uint64_t startTime;
+        uint64_t endTime;
+        uint64_t firstStart;
 
 
     public:
@@ -31,7 +33,6 @@ class Clock {
             return fedisch;
         }
 
-
         uint64_t timeSinceEpochMS() {
             using namespace std::chrono;
             return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
@@ -40,6 +41,25 @@ class Clock {
         uint64_t timeSinceEpochS() {
             using namespace std::chrono;
             return duration_cast<seconds>(system_clock::now().time_since_epoch()).count();
+        }
+
+        uint64_t getStartTime() {
+            return startTime;
+        }
+
+        uint64_t getEndTime() {
+            return endTime;
+        }
+
+        uint64_t getFirstStart() {
+            return firstStart;
+        }
+
+        std::string getStringAttribute(std::string s) {
+            if (s == "starttime" ) { return std::to_string(startTime); }
+            if (s == "endtime" ) { return std::to_string(endTime); }
+            if (s == "firststart" ) { return std::to_string(firstStart); }
+            return "nada";
         }
 
 };

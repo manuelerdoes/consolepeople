@@ -5,11 +5,11 @@ extern int computingInterval;
 extern std::mutex Mutex1;
 extern std::mutex Mutex2;
 
-void lifeThread(Human h, Human* hptr, Clock c) {
+void lifeThread(Human h, Human* hptr, Clock c, std::string &rf) {
     coutToConsole("starting life", h);
 
     unsigned long counter = 0;
-    while (true) {
+    while (rf != "stop") {
         // print age
 
         uint64_t age = c.elapsedS(h.getBirthday());
@@ -38,26 +38,27 @@ void lifeThread(Human h, Human* hptr, Clock c) {
         std::this_thread::sleep_for(std::chrono::milliseconds(computingInterval));
         counter++;   
     }
+    coutToConsole("bye", h);
 }
 
-std::thread liveLife(Human &h, Clock c) {
+std::thread liveLife(Human &h, Clock c, std::string &rf) {
     Human* hpointer = &h;
 
-    std::thread t(&lifeThread, h, hpointer, c);
+    std::thread t(&lifeThread, h, hpointer, c, std::ref(rf));
     
     return t;
 }
 
-void autoSave(Human &h) {
-    while (true) {
+void autoSave(Human &h, std::string &rf) {
+    while (rf != "stop") {
         updateHumanToDB(h);
         std::this_thread::sleep_for(std::chrono::milliseconds(4000));
     }
 }
 
-std::thread saveLife(Human &h) {
+std::thread saveLife(Human &h, std::string &rf) {
 
-    std::thread t(&autoSave, std::ref(h));
+    std::thread t(&autoSave, std::ref(h), std::ref(rf));
     
     return t;
 }

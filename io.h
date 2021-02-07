@@ -72,6 +72,14 @@ int initDB() {
     rc = sqlite3_exec(db, sql, callback, 0, &errorMessage);
     if (rc != SQLITE_OK) { return 2; }
 
+    const char* sql2 = "CREATE TABLE clock("  \
+        "firststart     REAL," \
+        "starttime          REAL," \
+        "endtime            REAL);";
+
+    rc = sqlite3_exec(db, sql2, callback, 0, &errorMessage);
+    if (rc != SQLITE_OK) { return 2; }
+
     return 0;
 }
 
@@ -98,6 +106,33 @@ void coutToConsole(Coutput o, Human h) {
 int saveToDB() {
     return 0;
 } 
+
+int insertClockToDB(Clock c) {
+    std::string query = "INSERT INTO clock " \
+                "VALUES ('" + std::to_string(c.getFirstStart()) + "', " \
+                "'" + std::to_string(c.getStartTime()) + "', '" + std::to_string(c.getEndTime()) + "');";
+
+    rc = sqlite3_exec(db, query.c_str(), callback, 0, &errorMessage);
+    if (rc != SQLITE_OK) { 
+        writeToErrorLog("SQL ERROR", errorMessage);
+        sqlite3_free(errorMessage);
+        return 2; }
+    return 0;
+}
+
+int updateClockAttributeToDB(Clock c, std::string s) {
+    std::string query = "UPDATE clock SET " + s + " = " + c.getStringAttribute(s) + ";";
+    rc = sqlite3_exec(db, query.c_str(), callback, 0, &errorMessage);
+    if (rc != SQLITE_OK) { 
+        writeToErrorLog("SQL ERROR", errorMessage);
+        sqlite3_free(errorMessage);
+        return 2; }
+    return 0;
+}
+
+int updateClockToDB(Clock c) {
+    return 0;
+}
 
 int insertHumanToDB(Human h) {
     std::string query = "INSERT INTO human " \
