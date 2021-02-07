@@ -2,6 +2,8 @@
 #define HUMANLIFE_H
 
 extern int computingInterval;
+extern std::mutex Mutex1;
+extern std::mutex Mutex2;
 
 void lifeThread(Human h, Human* hptr, Clock c) {
     coutToConsole("starting life", h);
@@ -42,6 +44,20 @@ std::thread liveLife(Human &h, Clock c) {
     Human* hpointer = &h;
 
     std::thread t(&lifeThread, h, hpointer, c);
+    
+    return t;
+}
+
+void autoSave(Human &h) {
+    while (true) {
+        updateHumanToDB(h);
+        std::this_thread::sleep_for(std::chrono::milliseconds(4000));
+    }
+}
+
+std::thread saveLife(Human &h) {
+
+    std::thread t(&autoSave, std::ref(h));
     
     return t;
 }

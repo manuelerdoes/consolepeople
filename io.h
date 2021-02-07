@@ -134,6 +134,7 @@ int updateHumanAttributeToDB(Human h, std::string s) {
 }
 
 int updateHumanToDB(Human h) {
+    std::lock_guard<std::mutex> guard(Mutex2);
     int dbok = updateHumanAttributeToDB(h, "bmi");
     dbok += updateHumanAttributeToDB(h, "ambition");
     dbok += updateHumanAttributeToDB(h, "humor");

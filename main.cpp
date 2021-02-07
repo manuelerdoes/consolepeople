@@ -18,6 +18,7 @@
 #include "io.h"
 #include "humanactions.h"
 #include "humanlife.h"
+//#include "bgsaving.h"
 //#include "classes/fraction.h"
 //#include "utilfuncs.h"
 
@@ -64,9 +65,11 @@ int main()
 
     // start threads for each human
     std::thread maxeslife = liveLife(max, clock1);
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::thread maxessave = saveLife(max);
     std::thread manuslife = liveLife(manu, clock1);
+    std::thread manussave = saveLife(manu);
     std::thread idaslife = liveLife(ida, clock1);
+    std::thread idassave = saveLife(ida);
 
     // main thread waiting and updating DB
     while (true) {
@@ -87,6 +90,9 @@ int main()
     maxeslife.join();
     manuslife.join();
     idaslife.join();
+    maxessave.join();
+    manussave.join();
+    idassave.join();
     sqlite3_close(db);
     mainLog.close();
 
