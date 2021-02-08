@@ -12,8 +12,8 @@ extern std::mutex Mutex1;
 extern std::mutex Mutex2;
 
 // Open Files
-std::ofstream mainLog("main.log", mainLog.app);
-std::ofstream errorLog("error.log", errorLog.app);
+std::ofstream mainLog("logs/main.log", mainLog.app);
+std::ofstream errorLog("logs/error.log", errorLog.app);
 
 // Error Log
 template <class Errorout>
