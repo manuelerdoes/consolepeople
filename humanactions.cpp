@@ -1,5 +1,3 @@
-#ifndef HUMANACTIONS_H
-#define HUMANACTIONS_H
 
 extern int computingInterval;
 extern std::mutex Mutex1;
@@ -42,7 +40,3 @@ void Human::doCalc() {
     }
 }
 
-
-
-
-#endif

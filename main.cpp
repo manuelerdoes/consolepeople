@@ -13,11 +13,11 @@
 #include <mutex>
 #include <ctime>
 #include <sqlite3.h>
-#include "clock.h"
-#include "classes/human.h"
-#include "io.h"
-#include "humanactions.h"
-#include "humanlife.h"
+#include "clock.cpp"
+#include "classes/human.cpp"
+#include "io.cpp"
+#include "humanactions.cpp"
+#include "humanlife.cpp"
 //#include "classes/fraction.h"
 //#include "utilfuncs.h"
 

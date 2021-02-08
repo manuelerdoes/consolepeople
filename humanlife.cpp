@@ -1,5 +1,4 @@
-#ifndef HUMANLIFE_H
-#define HUMANLIFE_H
+#include "humanlife.hpp"
 
 extern int computingInterval;
 extern std::mutex Mutex1;
@@ -63,6 +62,3 @@ std::thread saveLife(Human &h, std::string &rf) {
     return t;
 }
 
-
-
-#endif

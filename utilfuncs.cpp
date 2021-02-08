@@ -1,7 +1,5 @@
-#ifndef UTILFUNCS_H
-#define UTILFUNCS_H
-
-#include "classes/fraction.h"
+#include "classes/fraction.cpp"
+#include "utilfuncs.hpp"
 
 int randomNumber(int from, int to) {
     std::random_device dev;
@@ -69,5 +67,3 @@ int tripleProbabilityRandom(int fullRange, int range1, int range2, int range3, i
 
     return result;
 }
-
-#endif

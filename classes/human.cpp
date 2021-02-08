@@ -1,46 +1,8 @@
-#ifndef HUMAN_H
-#define HUMAN_H
+#include "../utilfuncs.cpp"
+#include "human.hpp"
 
-#include "../utilfuncs.h"
 
-class Human {
-    private:
-        std::string name;
-        std::string gender;
-        std::string haircolor;
-        float bmi;
-        uint64_t birthday; //in ms since epoch
-
-// character and stuff
-        int ambition;
-        int humor;
-        int empathy;
-        int selfawareness;
-        int selfpity;
-        int introvert;
-        int sexuality;
-        int painsensitivity;
-        int innergender;
-        int talkativity;
-        int logicscore;
-        int feelingscore;
-
-// state
-    // musts
-        int mood;
-        int eat;
-        int piss;
-        int shit;
-        int sleep;
-    // wants
-        int company;
-        int love;
-        int sex;
-        //int recognition;
-        //int friendship;
-
-    public:
-        Human(std::string n, std::string g, std::string h, Clock c) {
+        Human::Human(std::string n, std::string g, std::string h, Clock c) {
             name = n;
             gender = g;
             haircolor = h;
@@ -70,7 +32,7 @@ class Human {
             feelingscore = randomNumber(0,100);
         }
 
-        void printAttributes() {
+        void Human::printAttributes() {
             std::cout << "name: " << name << std::endl;
             std::cout << "gender: " << gender << std::endl;
             std::cout << "haircolor: " << haircolor << std::endl;
@@ -104,63 +66,58 @@ class Human {
             std::cout << "feelingscore: " << feelingscore << std::endl;
         }
 
-// outside functions
-        void doPiss(void);
-        void doShit(void);
-        void doCalc(void);
-
 // getters & setters
-        std::string getName() { return name; }
-        std::string getGender() { return gender; }
-        void setGender(std::string g) { gender = g; }
-        std::string getHaircolor() { return haircolor; }
-        void setHaircolor(std::string hc) { haircolor = hc; }
-        float getBmi() { return bmi; }
-        void setBmi(float b) { bmi = b; }
-        uint64_t getBirthday() { return birthday; }
-        void setBirthday(uint64_t b) { birthday = b; }
-        int getAmbition() { return ambition; }
-        void setAmbition(int a) { ambition = a; }
-        int getHumor() { return humor; }
-        void setHumor(int hu) { humor = hu; }
-        int getEmpathy() { return empathy; }
-        void setEmpathy(int e) { empathy = e; }
-        int getSelfawareness() { return selfawareness; }
-        void setSelfawareness(int s) { selfawareness = s; }
-        int getSelfpity() { return selfpity; }
-        void setSelfpity(int s) { selfpity = s; }
-        int getIntrovert() { return introvert; }
-        void setIntrovert(int i) { introvert = i; }
-        int getSexuality() { return sexuality; }
-        void setSexuality(int s) { sexuality = s; }
-        int getPainsensitivity() { return painsensitivity; }
-        void setPainsensitivity(int p) { painsensitivity = p; }
-        int getInnergender() { return innergender; }
-        void setInnergender(int i) { innergender = i; }
-        int getTalkativity() { return talkativity; }
-        void setTalkativity(int t) { talkativity = t; }
-        int getLogicscore() { return logicscore; }
-        void setLogicscore(int l) { logicscore = l; }
-        int getFeelingscore() { return feelingscore; }
-        void setFeelingscore(int f) { feelingscore = f; }
-        int getMood() { return mood; }
-        void setMood(int m) { mood = m; }
-        int getEat() { return eat; }
-        void setEat(int e) { eat = e; }
-        int getPiss() { return piss; }
-        void setPiss(int p) { piss = p; }
-        int getShit() { return shit; }
-        void setShit(int s) { shit = s; }
-        int getSleep() { return sleep; }
-        void setSleep(int s) { sleep = s; }
-        int getCompany() { return company; }
-        void setCompany(int c) { company = c; }
-        int getLove() { return love; }
-        void setLove(int l) { love = l; }
-        int getSex () { return sex; }
-        void setSex(int s) { sex = s; }
+        std::string Human::getName() { return name; }
+        std::string Human::getGender() { return gender; }
+        void Human::setGender(std::string g) { gender = g; }
+        std::string Human::getHaircolor() { return haircolor; }
+        void Human::setHaircolor(std::string hc) { haircolor = hc; }
+        float Human::getBmi() { return bmi; }
+        void Human::setBmi(float b) { bmi = b; }
+        uint64_t Human::getBirthday() { return birthday; }
+        void Human::setBirthday(uint64_t b) { birthday = b; }
+        int Human::getAmbition() { return ambition; }
+        void Human::setAmbition(int a) { ambition = a; }
+        int Human::getHumor() { return humor; }
+        void Human::setHumor(int hu) { humor = hu; }
+        int Human::getEmpathy() { return empathy; }
+        void Human::setEmpathy(int e) { empathy = e; }
+        int Human::getSelfawareness() { return selfawareness; }
+        void Human::setSelfawareness(int s) { selfawareness = s; }
+        int Human::getSelfpity() { return selfpity; }
+        void Human::setSelfpity(int s) { selfpity = s; }
+        int Human::getIntrovert() { return introvert; }
+        void Human::setIntrovert(int i) { introvert = i; }
+        int Human::getSexuality() { return sexuality; }
+        void Human::setSexuality(int s) { sexuality = s; }
+        int Human::getPainsensitivity() { return painsensitivity; }
+        void Human::setPainsensitivity(int p) { painsensitivity = p; }
+        int Human::getInnergender() { return innergender; }
+        void Human::setInnergender(int i) { innergender = i; }
+        int Human::getTalkativity() { return talkativity; }
+        void Human::setTalkativity(int t) { talkativity = t; }
+        int Human::getLogicscore() { return logicscore; }
+        void Human::setLogicscore(int l) { logicscore = l; }
+        int Human::getFeelingscore() { return feelingscore; }
+        void Human::setFeelingscore(int f) { feelingscore = f; }
+        int Human::getMood() { return mood; }
+        void Human::setMood(int m) { mood = m; }
+        int Human::getEat() { return eat; }
+        void Human::setEat(int e) { eat = e; }
+        int Human::getPiss() { return piss; }
+        void Human::setPiss(int p) { piss = p; }
+        int Human::getShit() { return shit; }
+        void Human::setShit(int s) { shit = s; }
+        int Human::getSleep() { return sleep; }
+        void Human::setSleep(int s) { sleep = s; }
+        int Human::getCompany() { return company; }
+        void Human::setCompany(int c) { company = c; }
+        int Human::getLove() { return love; }
+        void Human::setLove(int l) { love = l; }
+        int Human::getSex () { return sex; }
+        void Human::setSex(int s) { sex = s; }
 
-        std::string getStringAttribute(std::string s) {
+        std::string Human::getStringAttribute(std::string s) {
             if (s == "name") { return name; }
             if (s == "gender") { return gender; }
             if (s == "haircolor" ) { return haircolor; }
@@ -188,11 +145,3 @@ class Human {
             if (s == "sex" ) { return std::to_string(sex); }
             return "nada";
         }
-
-
-
-};
-
-
-
-#endif

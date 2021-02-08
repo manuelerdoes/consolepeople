@@ -1,5 +1,4 @@
-#ifndef IO_H
-#define IO_H
+#include "io.hpp"
 
 extern Clock clock1;
 
@@ -314,6 +313,3 @@ int loadHumanFromDB(Human &h) {
     if (sumus != 24) { return 1; }
     return 0;
 }
-
-
-#endif
