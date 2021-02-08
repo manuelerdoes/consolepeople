@@ -39,6 +39,7 @@ void lifeThread(Human h, Human* hptr, Clock c, std::string &rf) {
         std::this_thread::sleep_for(std::chrono::milliseconds(computingInterval));
         counter++;   
     }
+    updateHumanToDB(h);
     coutToConsole("bye", h);
 }
 

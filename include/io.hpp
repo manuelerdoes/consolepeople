@@ -9,6 +9,7 @@
 // Error Log
 template <class Errorout>
 void writeToErrorLog(std::string desc, Errorout e);
+
 // DB Stuff
 static int callback(void *NotUsed, int argc, char **argv, char **azColName);
 
@@ -19,9 +20,6 @@ int initDB();
 
 template <class Textout>
 void writeToMainLog(Textout s, Human h);
-
-// template <class Coutput>
-// void coutToConsole(Coutput o, Human h);
 
 void coutToConsole(std::string s, Human h);
 

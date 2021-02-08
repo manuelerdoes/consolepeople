@@ -3,7 +3,10 @@
 #include <fstream>
 #include <ctime>
 #include <vector>
+#include <filesystem>
 #include "../include/io.hpp"
+
+namespace fs = std::filesystem;
 
 extern Clock clock1;
 
@@ -12,8 +15,14 @@ extern std::mutex Mutex1;
 extern std::mutex Mutex2;
 
 // Open Files
+
+bool huhu = fs::create_directory("logs");
+bool haha = fs::create_directory(".consolepeople");
+
 std::ofstream mainLog("logs/main.log", mainLog.app);
 std::ofstream errorLog("logs/error.log", errorLog.app);
+
+
 
 // Error Log
 template <class Errorout>
@@ -37,7 +46,7 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
 
 sqlite3* db;
 char* errorMessage = 0;
-int rc = sqlite3_open("cp.db", &db);
+int rc = sqlite3_open(".consolepeople/cp.db", &db);
 
 int initDB() {
     
