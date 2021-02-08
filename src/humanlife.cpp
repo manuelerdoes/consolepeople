@@ -1,6 +1,6 @@
 #include <mutex>
-#include "io.hpp"
-#include "humanlife.hpp"
+#include "../include/io.hpp"
+#include "../include/humanlife.hpp"
 
 extern int computingInterval;
 extern std::mutex Mutex1;

@@ -1,6 +1,6 @@
 #include <random>
-#include "classes/fraction.hpp"
-#include "utilfuncs.hpp"
+#include "../include/fraction.hpp"
+#include "../include/utilfuncs.hpp"
 
 int randomNumber(int from, int to) {
     std::random_device dev;

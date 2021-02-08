@@ -1,5 +1,5 @@
 #include <chrono>
-#include "clock.hpp"
+#include "../include/clock.hpp"
 
 extern int computingInterval;
 extern int runningSpeed;

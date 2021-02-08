@@ -1,21 +1,9 @@
 #include <iostream>
-//#include <fstream>
-//#include <string>
-//#include <random>
-//#include <numeric>
-//#include <iomanip>
-//#include <chrono>
-//#include <thread>
 #include <unistd.h>
-#include <future>
-//#include <vector>
-//#include <mutex>
-//#include <ctime>
-//#include <sqlite3.h>
-#include "classes/clock.hpp"
-#include "classes/human.hpp"
-#include "io.hpp"
-#include "humanlife.hpp"
+#include "include/clock.hpp"
+#include "include/human.hpp"
+#include "include/io.hpp"
+#include "include/humanlife.hpp"
 
 int runningSpeed = 10;
 int computingInterval = 1000;

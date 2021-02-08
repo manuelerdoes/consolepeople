@@ -2,8 +2,8 @@
 #include <mutex>
 #include <chrono>
 #include <thread>
-#include "classes/human.hpp"
-#include "io.hpp"
+#include "../include/human.hpp"
+#include "../include/io.hpp"
 
 extern int computingInterval;
 extern std::mutex Mutex1;

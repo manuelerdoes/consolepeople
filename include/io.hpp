@@ -3,8 +3,8 @@
 
 #include <string>
 #include <sqlite3.h>
-#include "classes/clock.hpp"
-#include "classes/human.hpp"
+#include "clock.hpp"
+#include "human.hpp"
 
 // Error Log
 template <class Errorout>

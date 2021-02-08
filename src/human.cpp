@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../utilfuncs.hpp"
-#include "human.hpp"
+#include "../include/utilfuncs.hpp"
+#include "../include/human.hpp"
 
 
         Human::Human(std::string n, std::string g, std::string h, Clock c) {

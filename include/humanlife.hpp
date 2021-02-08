@@ -3,8 +3,8 @@
 
 #include <thread>
 #include <string>
-#include "classes/clock.hpp"
-#include "classes/human.hpp"
+#include "clock.hpp"
+#include "human.hpp"
 
 void lifeThread(Human h, Human* hptr, Clock c, std::string &rf);
 
