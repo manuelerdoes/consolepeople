@@ -6,6 +6,6 @@ It's a primitive human simulator. It starts very primitive, but should grow more
 Minimum C++ standard: c++17.  
 Needs following libs: pthread, sqlite3
 
-e.g. g++ -std=c++17 -lpthread -lsqlite3 -g main.cpp -o consolepeople
+e.g. g++ -std=c++17 -lpthread -lsqlite3 -g <all *.cpp files> -o consolepeople
 
 It runs on Linux and MacOS. Should run on Windows too, but I didn't check.
