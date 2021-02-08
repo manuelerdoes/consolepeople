@@ -1,9 +1,9 @@
 #include <iostream>
 #include <unistd.h>
-#include "include/clock.hpp"
-#include "include/human.hpp"
-#include "include/io.hpp"
-#include "include/humanlife.hpp"
+#include "../include/clock.hpp"
+#include "../include/human.hpp"
+#include "../include/io.hpp"
+#include "../include/humanlife.hpp"
 
 int runningSpeed = 10;
 int computingInterval = 1000;
