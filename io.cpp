@@ -1,3 +1,8 @@
+#include <mutex>
+#include <iostream>
+#include <fstream>
+#include <ctime>
+#include <vector>
 #include "io.hpp"
 
 extern Clock clock1;
@@ -95,16 +100,18 @@ void writeToMainLog(Textout s, Human h) {
     mainLog << std::endl;
 }
 
-template <class Coutput>
-void coutToConsole(Coutput o, Human h) {
+// template <class Coutput>
+// void coutToConsole(Coutput o, Human h) {
+//     std::lock_guard<std::mutex> guard(Mutex1);
+//     writeToMainLog(o, h);
+//     //std::cout << h.getName() << ": " << o << std::endl;
+// }
+
+void coutToConsole(std::string s, Human h) {
     std::lock_guard<std::mutex> guard(Mutex1);
-    writeToMainLog(o, h);
+    writeToMainLog(s, h);
     //std::cout << h.getName() << ": " << o << std::endl;
 }
-
-int saveToDB() {
-    return 0;
-} 
 
 int insertClockToDB(Clock c) {
     std::string query = "INSERT INTO clock " \
@@ -312,4 +319,10 @@ int loadHumanFromDB(Human &h) {
     
     if (sumus != 24) { return 1; }
     return 0;
+}
+
+void ioCleanup() {
+    mainLog.close();
+    errorLog.close();
+    sqlite3_close(db);
 }

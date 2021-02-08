@@ -1,25 +1,21 @@
 #include <iostream>
-#include <fstream>
-#include <string>
-//#include <filesystem>
-#include <random>
-#include <numeric>
-#include <iomanip>
-#include <chrono>
-#include <thread>
+//#include <fstream>
+//#include <string>
+//#include <random>
+//#include <numeric>
+//#include <iomanip>
+//#include <chrono>
+//#include <thread>
 #include <unistd.h>
 #include <future>
-#include <vector>
-#include <mutex>
-#include <ctime>
-#include <sqlite3.h>
-#include "clock.cpp"
-#include "classes/human.cpp"
-#include "io.cpp"
-#include "humanactions.cpp"
-#include "humanlife.cpp"
-//#include "classes/fraction.h"
-//#include "utilfuncs.h"
+//#include <vector>
+//#include <mutex>
+//#include <ctime>
+//#include <sqlite3.h>
+#include "classes/clock.hpp"
+#include "classes/human.hpp"
+#include "io.hpp"
+#include "humanlife.hpp"
 
 int runningSpeed = 10;
 int computingInterval = 1000;
@@ -89,8 +85,7 @@ int main()
     maxessave.join();
     manussave.join();
     idassave.join();
-    sqlite3_close(db);
-    mainLog.close();
+    ioCleanup();
 
     return 0;
 }

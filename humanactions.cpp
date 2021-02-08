@@ -1,4 +1,10 @@
 
+#include <mutex>
+#include <chrono>
+#include <thread>
+#include "classes/human.hpp"
+#include "io.hpp"
+
 extern int computingInterval;
 extern std::mutex Mutex1;
 

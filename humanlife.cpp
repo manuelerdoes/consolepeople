@@ -1,3 +1,5 @@
+#include <mutex>
+#include "io.hpp"
 #include "humanlife.hpp"
 
 extern int computingInterval;

@@ -1,4 +1,8 @@
+#include <chrono>
 #include "clock.hpp"
+
+extern int computingInterval;
+extern int runningSpeed;
 
 
         Clock::Clock() {

@@ -1,6 +1,11 @@
 #ifndef IO_H
 #define IO_H
 
+#include <string>
+#include <sqlite3.h>
+#include "classes/clock.hpp"
+#include "classes/human.hpp"
+
 // Error Log
 template <class Errorout>
 void writeToErrorLog(std::string desc, Errorout e);
@@ -15,8 +20,10 @@ int initDB();
 template <class Textout>
 void writeToMainLog(Textout s, Human h);
 
-template <class Coutput>
-void coutToConsole(Coutput o, Human h);
+// template <class Coutput>
+// void coutToConsole(Coutput o, Human h);
+
+void coutToConsole(std::string s, Human h);
 
 int insertClockToDB(Clock c);
 
@@ -33,6 +40,8 @@ int updateHumanToDB(Human h);
 std::string getHumanAttributeFromDB(Human h, std::string s);
 
 int loadHumanFromDB(Human &h);
+
+void ioCleanup();
 
 
 #endif

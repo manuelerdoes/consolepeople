@@ -1,4 +1,5 @@
-#include "classes/fraction.cpp"
+#include <random>
+#include "classes/fraction.hpp"
 #include "utilfuncs.hpp"
 
 int randomNumber(int from, int to) {

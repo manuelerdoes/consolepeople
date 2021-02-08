@@ -1,5 +1,5 @@
+#include <numeric>
 #include "fraction.hpp"
-
 
 
 Fraction::Fraction(int num, int deno) {

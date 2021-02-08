@@ -1,6 +1,9 @@
 #ifndef HUMAN_H
 #define HUMAN_H
 
+#include <string>
+#include "clock.hpp"
+
 
 class Human {
     private:
@@ -44,9 +47,9 @@ class Human {
         void printAttributes();
 
 // outside functions
-        void doPiss(void);
-        void doShit(void);
-        void doCalc(void);
+        void doPiss();
+        void doShit();
+        void doCalc();
 
 // getters & setters
         std::string getName();

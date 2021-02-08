@@ -1,8 +1,7 @@
 #ifndef CLOCK_H
 #define CLOCK_H
 
-extern int computingInterval;
-extern int runningSpeed;
+#include <string>
 
 class Clock {
     private:
